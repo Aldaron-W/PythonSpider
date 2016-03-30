@@ -47,6 +47,7 @@ class WebSpider:
                 m = re.match(r'\w[0-9]+\w[0-9]+', show['show_name'])
                 print 'name :' , show_detail[0]
                 if m:
+                    print 'match!'
                     print 'name :' , show_detail[0] , '\t', m.groups()
                     pass
                 pass
