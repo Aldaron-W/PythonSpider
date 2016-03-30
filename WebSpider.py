@@ -44,7 +44,10 @@ class WebSpider:
             match = pattern.search(show_detail[0])
 
             if match:
-                print show_detail[0]
+                m = re.match(r"\S[0-9]+\E[0-9]+", show['show_name'])
+                if m:
+                    print 'name :' , show_detail[0] , '\t', m.group[0]
+                    pass
                 pass
         pass
     pass
