@@ -14,12 +14,10 @@ class WebSpider:
         opener = urllib2.build_opener()           # create an OpenerDirector object
         opener.addheaders = [self.__headers]      # set HTTP headers
         content = opener.open(url).read()         # open the url and get the corresponding HTML contents
-        encoding = chardet.detect(content)['encoding']  # changing character encoding
-        content = content.decode(encoding, 'ignore')
         return content
 
     def get_shows(self, content):
-        soup = bs4.BeautifulSoup(content, "lxml")
+        soup = bs4.BeautifulSoup(content)
         div=soup.findAll('span', class_='b')               # return the first "div" tag
         #films_list = div.findAll('dl', class_="list-item")  # return the list of "li" tag under "div"
         return div
@@ -42,14 +40,17 @@ class WebSpider:
             show_detail = show['show_name'].split('.')
             pattern = re.compile(u'[\u4e00-\u9fa5]+')
             match = pattern.search(show_detail[0])
-
             if match:
-                m = re.match(r'\w[0-9]+\w[0-9]+', show['show_name'])
-                print 'name :' , show_detail[0]
+                pSeasonAndEpisode = re.compile(r'S\d+E\d+')
+                m = pSeasonAndEpisode.search(show['show_name'])
+                # print show['show_name']
                 if m:
-                    print 'match!'
-                    print 'name :' , show_detail[0] , '\t', m.groups()
-                    pass
-                pass
-        pass
-    pass
+                    match2 = pSeasonAndEpisode.findall(show['show_name'])
+                    seasonAndEpisode = match2[0]
+                    pSeason = seasonAndEpisode[1:3]
+                    pEpisode = seasonAndEpisode[4:6]
+                    # print 'name :' , show_detail[0] , 'Season :', seasonAndEpisode
+                    print 'name :' , show_detail[0] , 'Season :', pSeason, 'Episode :', pEpisode
+
+
+        return ''
