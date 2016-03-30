@@ -31,7 +31,7 @@ class WebSpider:
             # For each film
             show_dic = {}
             # retrieve corresponding informations
-            show_dic['show_name'] = show.a
+            show_dic['show_name'] = show.a.text
             # add all the informations of a film into list "films_sorted"
             shows_detail.append(show_dic)
 
