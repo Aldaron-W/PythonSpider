@@ -36,3 +36,15 @@ class WebSpider:
             shows_detail.append(show_dic)
 
         return shows_detail
+
+    def regex_show_name(self, shows_detail):
+        for show in shows_detail:
+            shows_detail = show['show_name'].split('.')
+            pattern = re.compile(u'[\u4e00-\u9fa5]+')
+            match = pattern.search(shows_detail[0])
+
+            if metch:
+                print shows_detail[0]
+                pass
+        pass
+    pass
