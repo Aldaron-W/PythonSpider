@@ -23,3 +23,16 @@ class WebSpider:
         div=soup.findAll('span', class_='b')               # return the first "div" tag
         #films_list = div.findAll('dl', class_="list-item")  # return the list of "li" tag under "div"
         return div
+
+    def get_show_detail(self, shows_list):
+        shows_detail = []
+
+        for show in shows_list:
+            # For each film
+            show_dic = {}
+            # retrieve corresponding informations
+            show_dic['show_name'] = show.a
+            # add all the informations of a film into list "films_sorted"
+            shows_detail.append(show_dic)
+
+        return shows_detail
