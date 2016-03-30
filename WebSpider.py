@@ -20,6 +20,6 @@ class WebSpider:
 
     def get_shows(self, content):
         soup = bs4.BeautifulSoup(content, "lxml")
-        div=soup.find('div', id='w')               # return the first "div" tag
-        films_list = div.findAll('dl', class_="list-item")  # return the list of "li" tag under "div"
-        return films_list
+        div=soup.findAll('span', class_='b')               # return the first "div" tag
+        #films_list = div.findAll('dl', class_="list-item")  # return the list of "li" tag under "div"
+        return div
