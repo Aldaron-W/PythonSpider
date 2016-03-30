@@ -6,5 +6,6 @@ url="http://cili009.com"
 
 webspider = WebSpider()
 content = webspider.open_url(url)
+shows = webspider.get_shows(content)
 
-print content
+print shows

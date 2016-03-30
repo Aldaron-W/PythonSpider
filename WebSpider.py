@@ -17,3 +17,9 @@ class WebSpider:
         encoding = chardet.detect(content)['encoding']  # changing character encoding
         content = content.decode(encoding, 'ignore')
         return content
+
+    def get_shows(self, content):
+        soup = bs4.BeautifulSoup(content)
+        div=soup.find('div', id='w')               # return the first "div" tag
+        films_list = div.findAll('dl', class_="list-item")  # return the list of "li" tag under "div"
+        return films_list
