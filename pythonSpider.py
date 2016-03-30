@@ -11,4 +11,4 @@ shows = webspider.get_shows(content)
 detail = webspider.get_show_detail(shows)
 
 for show in detail:
-	print show['show_name']
+	print (show['show_name'].split('.'))
