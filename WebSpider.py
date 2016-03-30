@@ -43,7 +43,7 @@ class WebSpider:
             pattern = re.compile(u'[\u4e00-\u9fa5]+')
             match = pattern.search(show_detail[0])
 
-            if metch:
+            if match:
                 print show_detail[0]
                 pass
         pass
